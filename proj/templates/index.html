@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  background-color:#ffff;
+  box-sizing: border-box;
+
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #ffff;
+  padding: 50px;
+}
+
+.col-75 {
+  background-color: #ffff;
+  height:40%;
+  width: 35%;
+  margin-top:20px;
+  }
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="
+  justify-content: center;">
+      <div class="col-75">
+          <h1>Secure Your Messege </h1>
+        <img src="{% static 'images/security.png' %}" style="max-width:50%; min-width:100%; min-height:50px;"alt="">
+      </div>
+    </div>
+    <div class="row" style="justify-content: center;">
+        <a href="{% url 'projapp:tex' %}">  <button style="border-radius:20px; display: flex; justify-content: center; margin: auto" class="btn btn-primary">Get started</button></a>
+        <br><br>
+    </div>
+    <div class="row">
+     {% for i in Encrypt %}
+        <div class="col-lg-4 col-md-6">
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">{{i.encrypted_string}}</h5>
+  </div>
+<br>
+</div>
+<br>
+</div>
+        {% endfor %}
+</div>
+</div>
+
+
+<!-- <section class="section" id="testmonial">-->
+<!--        <div class="container text-center">-->
+<!--            <p class="section-subtitle">What Think Client About Me ?</p>-->
+<!--            <h6 class="section-title mb-6">Testmonial</h6>-->
+
+<!--            &lt;!&ndash; row &ndash;&gt;-->
+<!--              <form action="" method="post" enctype="multipart/form-data">-->
+<!--                  {% csrf_token %}-->
+<!--            <div class="row">-->
+
+<!--                {% for i in Encrypt %}-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="testimonial-card">-->
+<!--                        </div>-->
+<!--                        <div class="testimonial-card-body" style="width:100%;">-->
+<!--                            <h6 class="testimonial-card-title">{{i.Name}}</h6>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% endfor %}<br>-->
+<!--            </form>-->
+<!--            <br>-->
+<!--            </div>-->
+<!--        </div> &lt;!&ndash; end of container &ndash;&gt;-->
+<!--    </section>-->
+
+</body>
+</html>
